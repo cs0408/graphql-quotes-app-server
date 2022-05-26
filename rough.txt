@@ -1,0 +1,24 @@
+************* Client Side ******************
+
+React.js ==>
+React Router v6 ==>
+Apollo Client v3+ ==> Whatever response comes from the server side, It keeps it in the cache.
+
+************* Database *********************
+
+mongodb Atlas ==> To access the Database remotely, you will use Atlas.
+
+************* Server side ******************
+
+Node.js ==>
+graphQL ==>
+apollo-server ==> used for graphQL API
+apollo-server-express ==> used for graphQL API and REST API's
+mongoose
+jsonwebtoken
+bcryptjs
+
+********************************************************************************************
+
+npm init --yes
+npm i graphql apollo-server apollo-server-core

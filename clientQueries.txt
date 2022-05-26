@@ -1,0 +1,120 @@
+================================================> Get All Users
+
+query getAllUsers {
+  users {
+    _id
+    firstName
+    lastName
+    email
+    quotes{
+      name
+    }
+  }
+}
+
+================================================> Get User By Id
+
+query getUserById($userId:ID!){
+  user(_id:$userId){  
+    _id
+		firstName
+  	lastName
+  	email
+    quotes{
+      name
+    }
+  }
+}
+
+Query Variables ------ { "userId" : "628dc649d8ef3a1fd8fc189d" }
+
+================================================> Get User Profile
+
+query getUserProfile{
+  user:myprofile{
+    _id
+    firstName
+    lastName
+    email
+    quotes{
+      name
+    }
+  }
+}
+
+HTTP Header --------- { "authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjhkZGRlNmIzMzkzN2JkNDcxYmI4ZmYiLCJpYXQiOjE2NTM0NjcxNTN9.UG0BmW4ulsrQdyTquHmyHf1MsN9QG2v-ZYeSOSOrJ40" }
+
+================================================> Get All Quotes
+
+query getAllQuotes{
+  quotes{
+    name
+    by{
+      _id
+      firstName
+      email
+    }
+  }
+}
+
+================================================> Get User All Quotes By Id
+
+query getUserQuotesById($quoteBy:ID!){
+  userQuotes(by:$quoteBy){
+   name
+  }
+}
+
+Query Variables ------ { "quoteBy" : "628dc649d8ef3a1fd8fc189d" }
+
+================================================> Create New User
+
+mutation createNewUser($newUserDetails:UserInput!){ 
+	user:signupUser(userNew:$newUserDetails)
+  {
+  	_id
+  	firstName
+  	lastName
+  	email
+    quotes{
+      name
+    }
+	}
+}
+
+Query Variables ------  {
+                          "newUserDetails":
+                          {
+                            "firstName": "Sanju",
+                            "lastName": "Singh",
+                            "email": "singh@gmail.com",
+                            "password": "singh@gmail.com"
+                          }
+                        }
+
+================================================> Login User
+
+mutation userSignin($userInput: UserSigninInput! )
+{
+  user:signinUser(userSignin:$userInput)
+  {
+ 		token
+  }
+}
+
+Query Variables ------ {
+	                        "userInput":
+                          {
+  	                        "email":"gourav@gmail.com",
+		                        "password":"gourav@gmail.com"
+	                        }
+                        }
+
+================================================> Create Quote
+
+mutation creatNewQuote($quoteName:String!){
+  quote:createQuote(name:$quoteName)
+}
+
+Query Variables ------ { "quoteName" : "Munna Bhaiya" }
+HTTP Header --------- { "authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjhkZGRlNmIzMzkzN2JkNDcxYmI4ZmYiLCJpYXQiOjE2NTM0NjcxNTN9.UG0BmW4ulsrQdyTquHmyHf1MsN9QG2v-ZYeSOSOrJ40" }
